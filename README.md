@@ -45,31 +45,5 @@ First, clone the repository to your local machine:
 git clone https://github.com/taabuosi/taabuosi.github.io.git
 cd taabuosi.github.io
 
-pip install geopandas matplotlib
-import geopandas as gpd
-import matplotlib.pyplot as plt
 
-# Function to create a customizable map layout
-def create_map_layout(dataframe, title=None, legend=False, scale_bar=False):
-    fig, ax = plt.subplots(figsize=(8, 6))
-
-    # Plot the map data
-    dataframe.plot(ax=ax, cmap='viridis')
-
-    # Add map elements based on user input
-    if title:
-        add_title(ax, title)
-    if legend:
-        add_legend(ax, dataframe['column_for_legend'])  # Replace with your legend column
-    if scale_bar:
-        add_scale_bar(ax, "1:50000")  # Example scale bar
-
-    plt.show()
-def add_title(ax, title):
-    ax.set_title(title, fontsize=14, fontweight='bold')
-def add_legend(ax, legend_data):
-    ax.legend(legend_data, loc='lower right', fontsize=10)
-def add_scale_bar(ax, scale_value):
-    ax.annotate(f'Scale: {scale_value}', xy=(0.1, 0.1), xycoords='axes fraction', fontsize=10)
-data.plot(ax=ax, cmap='plasma')
 
