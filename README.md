@@ -18,37 +18,58 @@
 <h3 align="left">Languages and Tools:</h3>
 <p align="left"> <a href="https://www.adobe.com/in/products/illustrator.html" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/adobe_illustrator/adobe_illustrator-icon.svg" alt="illustrator" width="40" height="40"/> </a> <a href="https://www.photoshop.com/en" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-line.svg" alt="photoshop" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> </p>
 
-# Advanced GIS Project: Customizable Map Layouts
+# Customizable Map Layouts Project
 
-## Overview
-
-This repository contains a Python script that generates customizable map layouts using **GeoPandas**. The script allows users to create a map layout with the following 7 elements:
-
-- Data (or map) frame
-- Map legend
-- Map title
-- North arrow
-- Map scale bar
-- Metadata (or map citation)
-- Border (or neatline)
-
-The user can customize these elements based on different layout options. The purpose of this project is to demonstrate how to automate map creation and design, providing a clean and professional map layout for various GIS applications.
+Welcome to the **Customizable Map Layouts** project! This repository contains a Python script that generates customizable map layouts using **GeoPandas** and **Matplotlib**. The script allows users to create professional-looking maps with several customizable elements, such as titles, legends, scale bars, and more.
 
 ## Features
 
-- Customizable map layouts
-- Easy-to-use Python script with options for each layout element
-- Neat and clean design suitable for presentation
+- **Customizable map layouts**: Easily add or remove elements such as map title, legend, scale bar, and more.
+- **Clean, professional designs**: Suitable for creating publication-quality maps.
+- **Easy-to-use Python script**: Modify map elements using simple Python function calls.
+- **Flexible design options**: Customizable options for each map element.
 
 ## Technologies Used
 
-- **GeoPandas** for GIS data handling
-- **Matplotlib** for plotting and customizing map layouts
-- **Python** for automation and script development
+- **GeoPandas**: A Python library for working with geospatial data.
+- **Matplotlib**: A plotting library to create the map layout.
+- **Python**: The scripting language used for automation.
 
 ## How to Use
 
-1. Clone the repository to your local machine.
-   ```bash
-   git clone https://github.com/taabuosi/taabuosi.github.io.git
-   cd taabuosi.github.io
+### 1. Clone the Repository
+
+First, clone the repository to your local machine:
+
+```bash
+git clone https://github.com/taabuosi/taabuosi.github.io.git
+cd taabuosi.github.io
+
+pip install geopandas matplotlib
+import geopandas as gpd
+import matplotlib.pyplot as plt
+
+# Function to create a customizable map layout
+def create_map_layout(dataframe, title=None, legend=False, scale_bar=False):
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    # Plot the map data
+    dataframe.plot(ax=ax, cmap='viridis')
+
+    # Add map elements based on user input
+    if title:
+        add_title(ax, title)
+    if legend:
+        add_legend(ax, dataframe['column_for_legend'])  # Replace with your legend column
+    if scale_bar:
+        add_scale_bar(ax, "1:50000")  # Example scale bar
+
+    plt.show()
+def add_title(ax, title):
+    ax.set_title(title, fontsize=14, fontweight='bold')
+def add_legend(ax, legend_data):
+    ax.legend(legend_data, loc='lower right', fontsize=10)
+def add_scale_bar(ax, scale_value):
+    ax.annotate(f'Scale: {scale_value}', xy=(0.1, 0.1), xycoords='axes fraction', fontsize=10)
+data.plot(ax=ax, cmap='plasma')
+
